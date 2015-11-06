@@ -19,8 +19,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Bayes {
 
     private static ArrayList<Columna> columnas = new ArrayList<Columna>();
-    
-    private static void setData(File data){
+
+    private static void setData(File data) {
         BufferedReader br = null;
         try {
             String line;
@@ -30,7 +30,7 @@ public class Bayes {
             for (String name : names) {
                 columnas.add(new Columna(name));
             }
-            while((line = br.readLine())!= null){
+            while ((line = br.readLine()) != null) {
                 String[] datos = line.split(",");
                 for (int i = 0; i < datos.length; i++) {
                     columnas.get(i).datos.add(datos[i]);
@@ -39,24 +39,29 @@ public class Bayes {
         } catch (Exception e) {
         }
     }
-    
-    public static void main(String[] args) {        
+
+    public static void countNandP() {
+        
+        for (String row : columnas.get(columnas.size() - 1).toString().toString().split("=")[1].split(" ")) {
+            
+        }
+    }
+
+    public static void main(String[] args) {
         JFileChooser fileIn = new JFileChooser(System.getProperty("user.dir"));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT File","txt");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT File", "txt");
         fileIn.setFileFilter(filter);
         int returnVal = fileIn.showOpenDialog(fileIn);
         File data = null;
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             data = fileIn.getSelectedFile();
-        }else{
-            System.out.println("No escogio ningun archivo"); 
+        } else {
+            System.out.println("No escogio ningun archivo");
         }
-        if(data != null){
+        if (data != null) {
             setData(data);
-            for (Columna col : columnas) {
-                System.out.println(col.toString());
-            }
+            System.out.println(columnas.get(columnas.size() - 1).toString().split("=")[1].split(" ")[1]);
         }
     }
-    
+
 }

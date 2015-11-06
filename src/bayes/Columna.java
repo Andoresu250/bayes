@@ -18,4 +18,12 @@ public class Columna {
     public Columna(String name) {
         this.name = name;
     }
+    @Override
+    public String toString(){
+        String s = name + " = ";
+        for (String dato : datos) {
+            s += dato + " ";
+        }
+        return s;
+    }
 }

@@ -5,7 +5,12 @@
  */
 package bayes;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -13,10 +18,45 @@ import java.util.ArrayList;
  */
 public class Bayes {
 
-    private ArrayList<Columna> columnas = new ArrayList<Columna>();
+    private static ArrayList<Columna> columnas = new ArrayList<Columna>();
     
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private static void setData(File data){
+        BufferedReader br = null;
+        try {
+            String line;
+            br = new BufferedReader(new FileReader(data));
+            line = br.readLine();
+            String[] names = line.split(",");
+            for (String name : names) {
+                columnas.add(new Columna(name));
+            }
+            while((line = br.readLine())!= null){
+                String[] datos = line.split(",");
+                for (int i = 0; i < datos.length; i++) {
+                    columnas.get(i).datos.add(datos[i]);
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public static void main(String[] args) {        
+        JFileChooser fileIn = new JFileChooser(System.getProperty("user.dir"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT File","txt");
+        fileIn.setFileFilter(filter);
+        int returnVal = fileIn.showOpenDialog(fileIn);
+        File data = null;
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            data = fileIn.getSelectedFile();
+        }else{
+            System.out.println("No escogio ningun archivo"); 
+        }
+        if(data != null){
+            setData(data);
+            for (Columna col : columnas) {
+                System.out.println(col.toString());
+            }
+        }
     }
     
 }

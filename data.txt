@@ -1,0 +1,15 @@
+outlook,temperature,humidity,windy,label
+S,H,P,F,0
+S,H,P,T,0
+O,H,P,F,1
+R,M,P,F,1
+R,C,N,F,1
+R,C,N,T,0
+O,C,N,T,1
+S,M,P,F,0
+S,C,N,F,1
+R,M,N,T,1
+S,M,N,T,1
+O,M,P,T,1
+O,H,N,F,1
+R,M,P,T,0

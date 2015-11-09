@@ -71,7 +71,6 @@ public class Bayes {
             for (int i = 0; i < prob.length; ++i) {
                 play_N *= prob[i][0];
             }
-
             play_N *= pp;            
         } else {
             for (int i = 0; i < prob.length; ++i) {
@@ -167,6 +166,11 @@ public class Bayes {
             for(int i = 0 ; i < columnas.size(); i++){
                 System.out.println(columnas.get(i).name.substring(0, 3) + ": " + columnas.get(i).name);                
             }
+            System.out.println("");
+            System.out.println("Outlook: Sunny=S Overcast=O Rain=R ");
+            System.out.println("Temperature: Hot=H Mild=M Cool=C");
+            System.out.println("Humidity: Peak=P Normal=N");
+            System.out.println("Windy: True=T False=F");
             System.out.println("class1: Play=P   class2:Not Play=NP");
             System.out.println("\nEnter your input: example. t={rain,hot,peak,false} input will be R,H,P,F");
             Scanner scr = new Scanner(System.in);

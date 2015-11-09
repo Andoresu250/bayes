@@ -1,4 +1,4 @@
-outlook,temperature,humidity,windy,label
+Outlook   ,Temperature    ,Humidity      ,Windy     ,Label
 S,H,P,F,0
 S,H,P,T,0
 O,H,P,F,1
